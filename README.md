@@ -1,5 +1,11 @@
 # Nass Payment Gateway — Laravel SDK
 
+<p align="center">
+<a href="https://packagist.org/packages/rstacode/nass"><img src="https://img.shields.io/packagist/v/rstacode/nass.svg?style=flat-square" alt="Latest Version on Packagist"></a>
+<a href="https://packagist.org/packages/rstacode/nass"><img src="https://img.shields.io/packagist/dt/rstacode/nass.svg?style=flat-square" alt="Total Downloads"></a>
+<a href="https://packagist.org/packages/rstacode/nass"><img src="https://img.shields.io/packagist/l/rstacode/nass.svg?style=flat-square" alt="License"></a>
+</p>
+
 <img width="3000" height="1674" alt="Image" src="https://github.com/user-attachments/assets/65f356bb-4f70-4613-8585-5fd4febb7672" />
 
 Laravel SDK for the [Nass Payment Gateway](https://nass.iq) — Iraq's payment processing platform.
@@ -87,19 +93,19 @@ return redirect($paymentUrl);
 
 ```json
 {
-    "success": true,
-    "code": 0,
-    "status_code": 200,
-    "data": {
-        "url": "https://3dsecure.nass.iq/gateway/{Transaction Parameters}",
-        "pSign": "18f...",
-        "transactionParams": {
-            "TERMINAL": "<TERMINAL_ID>",
-            "TRTYPE": "1",
-            "AMOUNT": "150",
-            "ORDER": "123456"
-        }
+  "success": true,
+  "code": 0,
+  "status_code": 200,
+  "data": {
+    "url": "https://3dsecure.nass.iq/gateway/{Transaction Parameters}",
+    "pSign": "18f...",
+    "transactionParams": {
+      "TERMINAL": "<TERMINAL_ID>",
+      "TRTYPE": "1",
+      "AMOUNT": "150",
+      "ORDER": "123456"
     }
+  }
 }
 ```
 
@@ -145,19 +151,19 @@ public function handleCallback(Request $request): void
 
 **Callback payload fields:**
 
-| Field               | Description                                  |
-|---------------------|----------------------------------------------|
-| `terminal`          | Terminal ID                                  |
-| `actionCode`        | `0` = success                                |
-| `responseCode`      | `00` = approved                              |
-| `card`              | Masked card number                           |
-| `amount`            | Transaction amount                           |
-| `currency`          | Currency code (368 = IQD)                    |
-| `rrn`               | Reference number in acquiring bank           |
-| `intRef`            | Internal reference (used for reversals)      |
-| `orderId`           | Your order ID (stored 7 days only)           |
-| `tranDate`          | Transaction date/time                        |
-| `transactionOrigin` | `local` or `international`                   |
+| Field               | Description                             |
+| ------------------- | --------------------------------------- |
+| `terminal`          | Terminal ID                             |
+| `actionCode`        | `0` = success                           |
+| `responseCode`      | `00` = approved                         |
+| `card`              | Masked card number                      |
+| `amount`            | Transaction amount                      |
+| `currency`          | Currency code (368 = IQD)               |
+| `rrn`               | Reference number in acquiring bank      |
+| `intRef`            | Internal reference (used for reversals) |
+| `orderId`           | Your order ID (stored 7 days only)      |
+| `tranDate`          | Transaction date/time                   |
+| `transactionOrigin` | `local` or `international`              |
 
 ---
 
@@ -184,18 +190,18 @@ try {
 
 Use these cards exclusively in the UAT environment:
 
-| PAN                | Expiry | CVV |
-|--------------------|--------|-----|
-| 5123450000000008   | 01/39  | 100 |
+| PAN              | Expiry | CVV |
+| ---------------- | ------ | --- |
+| 5123450000000008 | 01/39  | 100 |
 
 ---
 
 ## API Environments
 
-| Environment | Base URL                              |
-|-------------|---------------------------------------|
-| UAT         | `https://uat-gateway.nass.iq:9746`    |
-| Production  | `https://gateway.nass.iq:9746`        |
+| Environment | Base URL                           |
+| ----------- | ---------------------------------- |
+| UAT         | `https://uat-gateway.nass.iq:9746` |
+| Production  | `https://gateway.nass.iq:9746`     |
 
 ---
 
