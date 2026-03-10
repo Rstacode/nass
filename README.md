@@ -56,11 +56,11 @@ use Nass\Facades\Nass;
 
 // Uses credentials from config (NASS_USERNAME / NASS_PASSWORD)
 $response = Nass::auth()->login();
-$token = $response['access_token'];
+$token = $response['data']['access_token'];
 
 // Or pass credentials manually
 $response = Nass::auth()->login('your_username', 'your_password');
-$token = $response['access_token'];
+$token = $response['data']['access_token'];
 
 // Set the token for all subsequent requests
 Nass::setToken($token);
@@ -73,6 +73,11 @@ Nass::setToken($token);
 ```php
 use Nass\Facades\Nass;
 
+// Set Token
+$loginResponse = Nass::auth()->login();
+Nass::setToken($loginResponse['data']['access_token']);
+
+// Create Transaction
 $response = Nass::transactions()->create([
     'orderId'         => '123456',
     'orderDesc'       => 'Purchase of electronics',
@@ -118,6 +123,11 @@ return redirect($paymentUrl);
 ```php
 use Nass\Facades\Nass;
 
+// Set Token
+$loginResponse = Nass::auth()->login();
+Nass::setToken($loginResponse['data']['access_token']);
+
+// Check Transaction
 $status = Nass::transactions()->checkStatus('123456');
 
 echo $status['data']['statusMsg'];    // "Approved"
