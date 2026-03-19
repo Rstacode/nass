@@ -10,6 +10,11 @@
 
 Laravel SDK for the [Nass Payment Gateway](https://nass.iq) — Iraq's payment processing platform.
 
+### Requirements
+
+- **PHP** 8.1+
+- **Laravel** 10.x, 11.x, 12.x, or 13.x
+
 ---
 
 ## Installation
